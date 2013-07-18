@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Album</th>
+      <th>Title</th>
       <th>Artist</th>
       <th>Host</th>
       <th>Played on</th>
@@ -16,7 +16,7 @@
   <tbody>
     <% @albums.each do |album| %>
       <tr>
-        <td><%= album.album %></td>
+        <td><%= album.title %></td>
         <td><%= album.artist %></td>
         <td><%= album.host %></td>
         <td><%= album.played_on %></td>

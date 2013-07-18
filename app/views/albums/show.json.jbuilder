@@ -1,1 +1,1 @@
-json.extract! @album, :album, :artist, :host, :played_on, :created_at, :updated_at
+json.extract! @album, :title, :artist, :host, :played_on, :created_at, :updated_at

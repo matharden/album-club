@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  album: MyString
+  title: MyString
   artist: MyString
   host: MyString
-  played_on: 2013-07-18 13:36:44
+  played_on: 2013-07-18 14:01:47
 
 two:
-  album: MyString
+  title: MyString
   artist: MyString
   host: MyString
-  played_on: 2013-07-18 13:36:44
+  played_on: 2013-07-18 14:01:47
