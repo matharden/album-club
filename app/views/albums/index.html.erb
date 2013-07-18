@@ -19,7 +19,7 @@
         <td><%= album.title %></td>
         <td><%= album.artist %></td>
         <td><%= album.host %></td>
-        <td><%= album.played_on %></td>
+        <td><%= format_date album.played_on, :shortmonth %></td>
         <td><%= link_to 'Show', album %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
