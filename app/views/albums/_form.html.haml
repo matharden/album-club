@@ -1,4 +1,4 @@
-= simple_form_for(@album) do |f|
+= simple_form_for(@album, html: {novalidate: true}) do |f|
   - if @album.errors.any?
     #error_explanation
       %h2
