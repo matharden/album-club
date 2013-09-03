@@ -40,9 +40,16 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
-    b.use :label_input
+    # b.use :label_input
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    # b.use :error, wrap_with: { tag: :span, class: :error }
+
+    b.wrapper tag: :label, :for => 'id' do |component|
+      component.use :label_text
+      component.use :error, wrap_with: { tag: :span, class: :error }
+    end
+
+    b.use :input
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -92,7 +99,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
-  # config.label_text = lambda { |label, required| "#{required} #{label}" }
+  config.label_text = lambda { |label, required| "#{label} #{required}" }
 
   # You can define the class to use on all labels. Default is nil.
   config.label_class = 'control-label'
