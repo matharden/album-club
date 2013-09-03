@@ -50,6 +50,8 @@ SimpleForm.setup do |config|
     end
 
     b.use :input
+
+    b.use :number, :wrap_with => { :tag => 'div', :class => 'span1 number'}
   end
 
   # The default wrapper to be used by the FormBuilder.

@@ -8,9 +8,9 @@
         - @album.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.input :title
+  = f.input :title, :number => 1 #, :label_html => { :for => 'something' }
   = f.input :artist
-  = f.input :host
+  = f.input :host, as: :email
   = f.input :played_on
 
   .actions
