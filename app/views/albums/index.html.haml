@@ -3,7 +3,9 @@
     .media-block__image
       = image_tag 'transparent.gif', alt: album.title, class: 'js-remote-image', data: { artist: album.artist }
     .media-block__body
-      %p= album.title
+      %h1= album.title
       %p= album.artist
-      %p= album.host
-      %p= format_date album.played_on, :shortmonth
+      %p
+        = succeed ', ' do
+          = album.host
+        = format_date album.played_on, :shortmonth

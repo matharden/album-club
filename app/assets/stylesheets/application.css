@@ -11,6 +11,10 @@
  *= require_self
  *= require_tree .
  */
+html {
+  font: 1em/1.5 sans-serif;
+}
+
 #wrapper { margin:0 auto; width:50%; }
 .albums-index { color:#eee; background:#222; margin:0; }
 .albums-index #wrapper { width:auto; }
