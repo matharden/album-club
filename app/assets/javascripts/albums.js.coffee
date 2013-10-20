@@ -10,4 +10,4 @@ $('.js-remote-image').each ->
     if data.album
       $img.attr 'src', data.album.image[2]['#text']
     else
-      $img.closest('div').addClass 'media-block__image--not-found'
+      $img.closest('div').addClass 'is-notfound'
