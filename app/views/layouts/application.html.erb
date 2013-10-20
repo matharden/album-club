@@ -8,6 +8,19 @@
 </head>
 <body class="<%= controller.controller_name %>-<%= controller.action_name %>">
 
+<div id="user_nav">
+  <% if current_user %>
+    Signed in as <%= current_user.name %>
+    <%= link_to 'Sign out', signout_path %>
+  <% else %>
+    <%= link_to 'Sign in with Twitter', '/auth/twitter'%>
+  <% end %>
+</div>
+
+<% if notice.present? %>
+  <p><%= notice %></p>
+<% end %>
+
 <div id="wrapper"><%= yield %></div>
 
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>

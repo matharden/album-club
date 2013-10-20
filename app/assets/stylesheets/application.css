@@ -19,3 +19,12 @@ html {
 .albums-index { color:#eee; background:#222; margin:0; }
 .albums-index #wrapper { width:auto; }
 table { width:100%; }
+a {
+  color: #db9e36;
+}
+a:hover {
+  color: #ffd34e;
+}
+#user_nav {
+  float: right;
+}
