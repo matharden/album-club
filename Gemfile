@@ -33,6 +33,12 @@ gem 'haml-rails'
 # User authentication
 gem 'omniauth-twitter'
 
+# Tests
+gem 'rspec-rails'
+gem 'capybara'
+gem 'factory_girl'
+gem 'guard-rspec', group: :development
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
