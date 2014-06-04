@@ -1,17 +1,21 @@
 .media-block
-  float: left
+  display: inline-block
+  vertical-align: top
   width: 435px
   height: 174px
+  margin-bottom: 10px
+
+  .media-block__host
+    color: $white
 
 .media-block__image
   float: left
   width: 174px
   height: 174px
-  background: $grey-light
 
   &.is-notfound
     opacity: 0.2
 
 .media-block__body
   margin-left: 174px
-  padding: 10px
+  padding: 0 10px
