@@ -1,11 +1,13 @@
-- @albums.each do |album|
-  .album.media-block
-    .media-block__image
-      = image_tag 'transparent.gif', alt: album.title, class: 'js-remote-image', data: { artist: album.artist }
-    .media-block__body
-      %h1.title= album.title
-      %p.artist by #{album.artist}
-      %p.host
-        = succeed ', ' do
-          = album.host
-        = format_date album.played_on, :shortmonth
+.albums
+  - @albums.each do |album|
+    .album
+      %figure
+        = image_tag 'transparent.gif', alt: album.title, class: 'js-remote-image', data: { artist: album.artist }
+      .info
+        %h1.title= album.title
+        %p.artist by #{album.artist}
+        %p.host
+          = succeed ', ' do
+            = album.host
+          = format_date album.played_on, :shortmonth
+        %ol.tracks
