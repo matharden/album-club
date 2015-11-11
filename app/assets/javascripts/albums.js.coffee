@@ -12,7 +12,8 @@ $('.js-remote-image').each ->
     format: 'json'
   ).done (data) ->
     if data.album
-      $img.attr 'src', data.album.image[3]['#text']
+      $img.attr 'data-src', data.album.image[2]['#text']
       $img.closest('.album').find('.info .tracks').html listTracks(data.album.tracks.track)
+      processScroll()
     else
       $img.closest('div').addClass 'is-notfound'
