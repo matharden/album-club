@@ -2,18 +2,32 @@ listTracks = (tracks) ->
   tracks.map (track) ->
     "<li>#{track.name}</li>"
 
-$('.js-remote-image').each ->
-  $img = $(this)
+window.fetchAlbum = (albumImg, fn) ->
 
-  $.getJSON('http://ws.audioscrobbler.com/2.0/?method=album.getinfo',
-    api_key: '62cea209dd9ce3f813f103bad5f86954'
-    artist: $img.data 'artist'
-    album: $img.attr 'alt'
-    format: 'json'
-  ).done (data) ->
-    if data.album
-      $img.attr 'data-src', data.album.image[2]['#text']
-      $img.closest('.album').find('.info .tracks').html listTracks(data.album.tracks.track)
-      processScroll()
+  url = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo'
+
+  params = '&api_key=62cea209dd9ce3f813f103bad5f86954'
+  params+= '&format=json'
+  params+= '&artist=' + encodeURIComponent albumImg.dataset['artist']
+  params+= '&album=' + encodeURIComponent albumImg.getAttribute('alt')
+
+  request = new XMLHttpRequest
+  request.open 'GET', url + params, true
+
+  request.onload = ->
+    if @status >= 200 and @status < 400
+      # Success!
+      data = JSON.parse(@response)
+      if data.album
+        albumImg.setAttribute 'data-src', data.album.image[2]['#text']
+        albumImg.parentNode.parentNode.querySelector('.tracks').innerHTML = listTracks(data.album.tracks.track).join ' '
+        loadImage albumImg, fn
     else
-      $img.closest('div').addClass 'is-notfound'
+      # We reached our target server, but it returned an error
+    return
+
+  request.onerror = ->
+    # There was a connection error of some sort
+    return
+
+  request.send()

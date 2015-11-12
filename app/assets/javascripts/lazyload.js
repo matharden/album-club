@@ -5,7 +5,7 @@
  * `<img src="blank.gif" data-src="my_image.png" width="600" height="400" class="lazy">`
  */
  (function() {
-  function loadImage (el, fn) {
+  window.loadImage = function (el, fn) {
     var img = new Image()
       , src = el.getAttribute('data-src');
     img.onload = function() {
@@ -33,20 +33,20 @@
   window.query = document.querySelectorAll('img.lazy');
 
   window.processScroll = function(){
+    var image;
     for (var i = 0; i < images.length; i++) {
       if (elementInViewport(images[i])) {
-        loadImage(images[i], function () {
-          images.splice(i, i);
-        });
+        image = images.splice(i, 1);
+        fetchAlbum(image[0]);
       }
     };
   };
 
-  // Array.prototype.slice.call is not callable under our lovely IE8
   for (var i = 0; i < query.length; i++) {
     images.push(query[i]);
   };
 
+  processScroll()
   window.addEventListener('scroll', processScroll, false);
 
 })();
