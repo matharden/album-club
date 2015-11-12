@@ -6,16 +6,20 @@
  */
  (function() {
   window.loadImage = function (el, fn) {
-    var img = new Image()
-      , src = el.getAttribute('data-src');
+    var img = new Image();
+    var src = el.getAttribute('data-src');
+
     img.onload = function() {
-      if (!! el.parent)
+      if (!!el.parent)
         el.parent.replaceChild(img, el)
       else
         el.src = src;
 
+      el.classList.remove('loading');
       fn? fn() : null;
     }
+
+
     img.src = src;
   }
 
@@ -30,14 +34,15 @@
   }
 
   window.images = new Array();
-  window.query = document.querySelectorAll('img.lazy');
+  window.query = document.querySelectorAll('.album img');
 
   window.processScroll = function(){
     var image;
     for (var i = 0; i < images.length; i++) {
       if (elementInViewport(images[i])) {
-        image = images.splice(i, 1);
-        fetchAlbum(image[0]);
+        image = images.splice(i, 1)[0];
+        fetchAlbum(image);
+        image.classList.add('loading');
       }
     };
   };

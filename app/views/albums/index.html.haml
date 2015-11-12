@@ -2,7 +2,7 @@
   - @albums.each do |album|
     .album
       %figure
-        %img{src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', alt: album.title, class: 'js-remote-image lazy', data: { artist: album.artist } }
+        %img{src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', alt: album.title, data: { artist: album.artist } }
       .info
         %h1.title= album.title
         %p.artist by #{album.artist}

@@ -16,18 +16,48 @@
   font-size: .8rem
 
 .album img
-  width: 100%
-  max-width: 100%
-  vertical-align: bottom
+  height: 150px
+  width: 150px
 
-.albums
+.album img[src^=data]
+  border-radius: 50%
+  content: ""
+  display: block
+  background-color: #000
+  background-image: radial-gradient(rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 1%, rgba(206, 70, 38, 1) 2%, rgba(206, 70, 38, 1) 23%, rgba(206, 70, 38, 0.5) 24%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.1) 41%, rgba(255, 255, 255, 0) 43%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0) 53%, rgba(255, 255, 255, 0.1) 54%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.1) 61%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0.1) 63%, rgba(255, 255, 255, 0) 64%, rgba(255, 255, 255, 0.1) 65%, rgba(255, 255, 255, 0) 66%), linear-gradient(45deg, #000 0%, #000 30%, rgba(47, 47, 47, 1) 50%, #000 70%, #000 100%)
 
-  .album
-    figure
-      height: 150px
-      width: 150px
-      border-radius: 50%
-      background-image: radial-gradient(rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 1%, rgba(206, 70, 38, 1) 2%, rgba(206, 70, 38, 1) 21%, rgba(206, 70, 38, 1) 22%, rgba(206, 70, 38, 1) 23%, rgba(206, 70, 38, 0.5) 24%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.1) 41%, rgba(255, 255, 255, 0) 43%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0) 53%, rgba(255, 255, 255, 0.1) 54%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.1) 61%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0.1) 63%, rgba(255, 255, 255, 0) 64%, rgba(255, 255, 255, 0.1) 65%, rgba(255, 255, 255, 0) 66%), linear-gradient(45deg, #000 0%, #000 30%, rgba(47, 47, 47, 1) 50%, #000 70%, #000 100%)
+.loading
+  -webkit-animation: playing 3s linear 0s infinite
+  -moz-animation: playing 3s linear 0s infinite
+  -o-animation: playing 3s linear 0s infinite
+  animation: playing 3s linear 0s infinite
 
-    .tracks
-      display: none
+.tracks
+  display: none
+
+@-webkit-keyframes playing
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(360deg)
+
+
+@-moz-keyframes playing
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(360deg)
+
+
+@-o-keyframes playing
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(360deg)
+
+
+@keyframes playing
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(360deg)

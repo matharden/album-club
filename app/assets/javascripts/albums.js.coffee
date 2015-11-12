@@ -19,7 +19,10 @@ window.fetchAlbum = (albumImg, fn) ->
       # Success!
       data = JSON.parse(@response)
       if data.album
-        albumImg.setAttribute 'data-src', data.album.image[2]['#text']
+        if data.album.image[2]['#text']
+          albumImg.setAttribute 'data-src', data.album.image[2]['#text']
+        else
+          albumImg.classList.remove 'loading'
         albumImg.parentNode.parentNode.querySelector('.tracks').innerHTML = listTracks(data.album.tracks.track).join ' '
         loadImage albumImg, fn
     else
