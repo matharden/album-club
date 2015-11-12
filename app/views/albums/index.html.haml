@@ -1,14 +1,15 @@
 .albums
   - @albums.each do |album|
     .album
-      %figure
-        %img{src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', alt: album.title, data: { artist: album.artist } }
-      .info
-        %h1.title= album.title
-        %p.artist by #{album.artist}
-        %p.host
-          = succeed ', ' do
-            = album.host
-          = format_date album.played_on, :shortmonth
       %input(type="checkbox")
-      %ol.tracks
+      %div
+        %figure
+          %img{src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', alt: album.title, data: { artist: album.artist } }
+        .info
+          %h1.title= album.title
+          %p.artist by #{album.artist}
+          %p.host
+            = succeed ', ' do
+              = album.host
+            = format_date album.played_on, :shortmonth
+        %ol.tracks
