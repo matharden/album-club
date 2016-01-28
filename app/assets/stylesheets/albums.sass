@@ -66,19 +66,18 @@ figure::after
 .tracks
   display: none
 
-\:checked +
-  div
-    figure
-      img
-        -webkit-transform: rotate(-1deg) scale(1.05)
-        transform: rotate(-1deg) scale(1.05) translateY(-3px)
-        box-shadow: 1px 3px 3px #000
-      &::after
-        -webkit-transform: translateX(90px) rotate(90deg) scale(0.95)
-        transform: translateX(90px) rotate(90deg) scale(0.95)
-    .tracks
-      display: block
-      background: transparent
+\:checked ~
+  figure
+    img
+      -webkit-transform: rotate(-1deg) scale(1.05)
+      transform: rotate(-1deg) scale(1.05) translateY(-3px)
+      box-shadow: 1px 3px 3px #000
+    &::after
+      -webkit-transform: translateX(90px) rotate(90deg) scale(0.95)
+      transform: translateX(90px) rotate(90deg) scale(0.95)
+  .tracks
+    display: block
+    background: transparent
 
 @-webkit-keyframes playing
   from
