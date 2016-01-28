@@ -1,5 +1,17 @@
+<nav id="primary">
+  <% if current_user %>
+    <%= link_to 'Home', root_path %>
+    <%= link_to 'Sign out', signout_path %>
+  <% end %>
+</nav>
+
 <h1>New album</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', albums_path %>
+<nav class="user_nav">
+  <% unless current_user %>
+    <%= link_to 'Home', root_path %>
+    <%= link_to 'Sign in', '/auth/twitter'%>
+  <% end %>
+</nav>
