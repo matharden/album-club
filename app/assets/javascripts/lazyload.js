@@ -1,3 +1,4 @@
+// This is so fithly, I'm ashamed of myself.
 /* lazyload.js (c) Lorenzo Giuliani
  * MIT License (http://www.opensource.org/licenses/mit-license.html)
  *
@@ -36,11 +37,12 @@
   window.images = new Array();
   window.query = document.querySelectorAll('.album img');
 
-  window.processScroll = function(){
+  var processScroll = function(){
     var image;
-    for (var i = 0; i < images.length; i++) {
-      if (elementInViewport(images[i])) {
-        image = images.splice(i, 1)[0];
+    var len = images.length;
+    while(len--) {
+      if (elementInViewport(images[len])) {
+        image = images.splice(len, 1)[0];
         fetchAlbum(image);
         image.classList.add('loading');
       }
@@ -51,7 +53,15 @@
     images.push(query[i]);
   };
 
-  processScroll()
-  window.addEventListener('scroll', processScroll, false);
+  processScroll();
+
+  var timer;
+  window.addEventListener('scroll', function () {
+    clearTimeout(timer);
+    timer = setTimeout( refresh , 150 );
+  });
+  var refresh = function() {
+    processScroll();
+  };
 
 })();
