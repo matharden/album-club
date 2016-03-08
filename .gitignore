@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/node_modules
+
+# Ignore assets compiled by Gulp.
+/public/assets

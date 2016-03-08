@@ -1,0 +1,6 @@
+/*
+ * Application manifest for Gem based assets.
+ *
+ * Include compiled Gulp assets from public/assets.
+ *= require app
+ */
