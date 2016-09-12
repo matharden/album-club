@@ -1,6 +1,19 @@
 listTracks = (tracks) ->
   tracks.map (track) ->
-    "<li>#{track.name}</li>"
+    """
+    <tr><td>#{track['@attr'].rank}</td>
+    <td>#{track.name}</td>
+    <td>#{toMinutes(track.duration)}</td></tr>
+    """
+
+toMinutes = (t) ->
+  m = 60
+  r = t % m
+  min = (t - r) / m
+  min + ':' + pad(r)
+
+pad = (n) ->
+  ('00' + n).slice -2
 
 window.fetchAlbum = (albumImg, fn) ->
 
@@ -23,7 +36,7 @@ window.fetchAlbum = (albumImg, fn) ->
           albumImg.setAttribute 'data-src', data.album.image[2]['#text']
         else
           albumImg.classList.remove 'loading'
-        albumImg.parentNode.parentNode.querySelector('.tracks').innerHTML = listTracks(data.album.tracks.track).join ' '
+        albumImg.parentNode.parentNode.querySelector('.tracks tbody').innerHTML = listTracks(data.album.tracks.track).join ' '
         loadImage albumImg, fn
     else
       # We reached our target server, but it returned an error

@@ -7,13 +7,21 @@
   margin: 0
 
 .artist
-  font: .9rem/1 'Coda Caption', sans-serif
+  font: 800 .9rem/1 'Coda', sans-serif
   color: $orange-2
 
 .host
-  margin: .5em 0
-  color: $green-2
+  float: right
+  margin: 0
+  color: $white
+  text-align: right
   font-size: .8rem
+
+  strong
+    font-size: 2em
+
+time
+  display: block
 
 [type=checkbox]
   position: absolute
@@ -32,6 +40,9 @@ figure
 .album
   margin-top: 1em
   position: relative
+
+  + .album
+    margin-top: 2em
 
 .album img
   z-index: 2
@@ -53,6 +64,9 @@ figure
 
 .album img:not([src^=http]) +
 
+.info
+  margin: 1rem 0
+
 figure::after
   position: relative
   z-index: 1
@@ -63,8 +77,14 @@ figure::after
   -o-animation: playing 3s linear 0s infinite
   animation: playing 3s linear 0s infinite
 
+table
+  opacity: 0
+  widows: 100%
+  transform: scale(.8) translateY(-20%)
+  transition: all .3s
+
 .tracks
-  display: none
+  height: 0
 
 \:checked ~
   figure
@@ -76,8 +96,19 @@ figure::after
       -webkit-transform: translateX(90px) rotate(90deg) scale(0.95)
       transform: translateX(90px) rotate(90deg) scale(0.95)
   .tracks
-    display: block
-    background: transparent
+    height: auto
+    table
+      opacity: 1
+      transform: scale(1) translateY(0)
+      background: transparent
+      border-collapse: collapse
+      width: 100%
+      tr + tr td
+        border-top: 1px solid rgba($white, .3)
+      td
+        vertical-align: top
+        &:nth-child(3)
+          text-align: right
 
 @-webkit-keyframes playing
   from
