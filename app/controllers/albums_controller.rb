@@ -5,6 +5,7 @@ class AlbumsController < ApplicationController
   # GET /albums.json
   def index
     @albums = Album.all
+    @hosts = Album.pluck(:host).uniq
   end
 
   # GET /albums/1

@@ -1,6 +1,10 @@
+- @hosts.each do |host|
+  %input.hosts(type="checkbox"){id: host.downcase}
+  %label{for: host.downcase}= host
+
 .albums
   - @albums.each do |album|
-    .album
+    .album{class: album.host.downcase}
       %input(type="checkbox")
       %p.host
         %strong ##{album.id}
