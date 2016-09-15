@@ -39,11 +39,50 @@ figure
   width: 150px
   height: 150px
 
+input.hosts
+  display: none
+
+  + label
+    cursor: pointer
+    flex: 1 auto
+    margin: 2px
+    padding: 2px 4px
+    color: $grey-1
+    background: $green-1
+    border: 1px solid $green-1
+    border-radius: 4px
+
+  &:checked:first-of-type ~ label,
+  &:checked + label
+    color: $white
+    background: transparent
+    border-color: $white
+
+  label:nth-of-type(n+2)
+    order: 1
+
+// This is repeated in the view.
+#host-all:checked ~ .albums .album
+  display: block
+
+#host-all + label
+  order: 2
+  flex: 2
+
+// Initial view.
+#host-all:checked + label
+  color: $green-1
+  background: $grey-1
+  border: 1px solid $green-1
+
 .albums
   display: flex
   flex-wrap: wrap
+  order: 3
+  flex-basis: 960px
 
 .album
+  display: none
   flex: 1 240px
   margin-top: 3em
   padding: 0 8px 0 88px

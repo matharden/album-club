@@ -1,6 +1,19 @@
+%style
+  - @hosts.each do |host|
+    \#host-#{host.downcase}:checked ~ .albums .album.#{host.downcase},
+  \#host-all:checked ~ .albums .album {
+  display: block
+  }
+
+%input.hosts.all(type="radio" name="host" id="host-all" checked)
+%label.all(for="host-all") Show all
+- @hosts.each do |host|
+  %input.hosts(type="radio" name="host" id="host-#{host.downcase}")
+  %label(for="host-#{host.downcase}")= host
+
 .albums
   - @albums.each do |album|
-    .album
+    .album{class: album.host.downcase}
       %input(type="checkbox")
       %p.host
         %strong ##{album.id}
