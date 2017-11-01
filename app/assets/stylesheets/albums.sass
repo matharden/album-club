@@ -132,10 +132,17 @@ table
     word-wrap: break-word
 
   td:first-child
-    padding-right: .5em
+    width: 2em
+
+  td:last-child
+    width: 3em
 
 .tracks
   height: 0
+
+@media (max-width: 687px)
+  .tracks
+    margin-left: -76px
 
 \:checked ~
   figure
