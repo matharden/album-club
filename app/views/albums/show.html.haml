@@ -1,1 +1,6 @@
-= render 'album', album: @album
+%div
+  - if current_user
+    = link_to 'Edit album', edit_album_path
+    \|
+  = link_to 'All albums', root_path
+= render 'album', album: @album, open_album: true

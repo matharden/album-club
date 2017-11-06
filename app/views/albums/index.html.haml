@@ -13,17 +13,4 @@
 
 .albums
   - @albums.each do |album|
-    .album{class: album.host.downcase}
-      %input(type="checkbox")
-      %p.host
-        %strong ##{album.id}
-        %time= format_date album.played_on, :shortmonth
-        %a= album.host
-      %figure
-        %img{src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', alt: album.title, data: { artist: album.artist } }
-      .info
-        %h1.title= album.title
-        %p.artist by #{album.artist}
-      %div.tracks
-        %table
-          %tbody
+    = render 'album', album: album, open_album: false
