@@ -3,8 +3,9 @@
     %input(type="checkbox")
   %p.host
     - unless open_album
-      = link_to album do
-        %strong ##{album.id}
+      %strong
+        = link_to album do
+          \##{album.id}
     %time= format_date album.played_on, :shortmonth
     %a= album.host
   %figure
