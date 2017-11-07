@@ -12,7 +12,12 @@
     %img{src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', alt: album.title, data: { artist: album.artist } }
   .info
     %h1.title= album.title
-    %p.artist by #{album.artist}
+    %p.artist
+      by
+      - comma = "," if album.release_date
+      = succeed comma do
+        = album.artist
+      = album.release_date.strftime '%Y' if album.release_date
   %div.tracks
     %table
       %tbody
