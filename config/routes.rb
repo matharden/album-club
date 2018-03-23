@@ -1,4 +1,6 @@
 AlbumClub::Application.routes.draw do
+  resources :tracks
+
   resources :albums
   get '/' => 'albums#index'
   root to: 'albums#index'

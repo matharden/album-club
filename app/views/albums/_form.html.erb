@@ -1,4 +1,4 @@
-<% if current_user %>
+<%# if current_user %>
   <%= form_for(@album) do |f| %>
     <% if @album.errors.any? %>
       <div id="error_explanation">
@@ -25,15 +25,19 @@
       <%= f.text_field :host %>
     </div>
     <div class="field">
-      <%= f.label :played_on %><br>
-      <%= f.date_select :played_on, order: [:day, :month, :year] %>
+      <%#= f.label :played_on %><br>
+      <%#= f.date_select :played_on, order: [:day, :month, :year] %>
     </div>
     <div class="field">
-      <%= f.label :release_date %><br>
-      <%= f.date_select :release_date, order: [:day, :month, :year], start_year: 1920  %>
+      <%#= f.label :release_date %><br>
+      <%#= f.date_select :release_date, order: [:day, :month, :year], start_year: 1920  %>
     </div>
+    <!-- <div class="field">
+      <%#= f.label :release_date %><br>
+      <%#= f.date_select :release_date, order: [:day, :month, :year], start_year: 1920  %>
+    </div> -->
     <div class="actions">
       <%= f.submit %>
     </div>
   <% end %>
-<% end %>
+<%# end %>
