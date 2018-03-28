@@ -1,4 +1,7 @@
 <%# if current_user %>
+  <figure class="album">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="<%= @album.title %>" data-artist="<%= @album.artist %>">
+  </figure>
   <%= form_for(@album) do |f| %>
     <% if @album.errors.any? %>
       <div id="error_explanation">
@@ -36,6 +39,12 @@
       <%#= f.label :release_date %><br>
       <%#= f.date_select :release_date, order: [:day, :month, :year], start_year: 1920  %>
     </div> -->
+    <%= f.fields_for :tracks do |builder| %>
+      <%= render 'track_fields', f: builder %>
+    <% end %>
+    <button onclick="processScroll(writeFields);return false">Get tracks</button>
+    <%= template_to_add_fields f, :tracks %>
+    <%= link_to_add_fields "Add Track", f, :tracks %>
     <div class="actions">
       <%= f.submit %>
     </div>

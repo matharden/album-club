@@ -1,3 +1,13 @@
+window.writeTracks = (tracks, image) ->
+  image.parentNode.parentNode.querySelector('.tracks tbody').innerHTML = listTracks(tracks).join ' '
+
+window.writeFields = (tracks) ->
+  tracks.forEach (track) ->
+    newFields = useTemplate()
+    newFields.find("input[name$='[track_number]']").val track['@attr'].rank
+    newFields.find("input[name$='[name]']").val track.name
+    newFields.find("input[name$='[duration]']").val track.duration
+
 listTracks = (tracks) ->
   tracks.map (track) ->
     """
@@ -36,8 +46,8 @@ window.fetchAlbum = (albumImg, fn) ->
           albumImg.setAttribute 'data-src', data.album.image[2]['#text']
         else
           albumImg.classList.remove 'loading'
-        albumImg.parentNode.parentNode.querySelector('.tracks tbody').innerHTML = listTracks(data.album.tracks.track).join ' '
-        loadImage albumImg, fn
+        fn data.album.tracks.track, albumImg
+        loadImage albumImg
     else
       # We reached our target server, but it returned an error
     return
@@ -47,3 +57,26 @@ window.fetchAlbum = (albumImg, fn) ->
     return
 
   request.send()
+
+
+jQuery ->
+  $('form').on 'click', '.remove_fields', (event) ->
+    $(this).prev('input[type=hidden]').val('1')
+    $(this).closest('fieldset').hide()
+    event.preventDefault()
+
+  $('form').on 'click', '.add_fields', (event) ->
+    time = new Date().getTime()
+    regexp = new RegExp($(this).data('id'), 'g')
+    $(this).before($(this).data('fields').replace(regexp, time))
+    event.preventDefault()
+
+  getRandomInt = (max) ->
+    Math.floor(Math.random() * Math.floor(max))
+
+  window.useTemplate = (el) ->
+    template = $('.fields_template')
+    time = new Date().getTime()
+    regexp = new RegExp(template.data('id'), 'g')
+    newField = template.data('fields').replace(regexp, time + getRandomInt(9999))
+    $(newField).insertBefore('.fields_template')

@@ -21,3 +21,5 @@
   %div.tracks
     %table
       %tbody
+        - album.tracks.order('track_number ASC').each do |track|
+          %p= track.name

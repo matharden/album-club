@@ -31,13 +31,13 @@
   window.images = new Array();
   window.query = document.querySelectorAll('.album img');
 
-  var processScroll = function(){
+  window.processScroll = function(fn){
     var image;
     var len = images.length;
     while(len--) {
       if (elementInViewport(images[len])) {
         image = images.splice(len, 1)[0];
-        fetchAlbum(image);
+        fetchAlbum(image, fn);
         image.classList.add('loading');
       }
     };
@@ -47,7 +47,9 @@
     images.push(query[i]);
   };
 
-  processScroll();
+  if (document.body.classList.contains('albums-index')) {
+    window.processScroll(writeTracks);
+  }
 
   var timer;
   window.addEventListener('scroll', function () {
@@ -55,7 +57,7 @@
     timer = setTimeout( refresh , 150 );
   });
   var refresh = function() {
-    processScroll();
+    window.processScroll();
   };
 
 })();

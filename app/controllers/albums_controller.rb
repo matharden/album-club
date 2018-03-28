@@ -43,7 +43,7 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to root_url, notice: 'Album was successfully updated.' }
+        format.html { redirect_to @album, notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,6 +70,6 @@ class AlbumsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :artist, :host, :played_on, :release_date)
+      params.require(:album).permit(:title, :artist, :host, :played_on, :release_date, :tracks_attributes => [:id, :track_number, :name, :duration, :album_id])
     end
 end
