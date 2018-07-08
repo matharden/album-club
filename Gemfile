@@ -33,6 +33,8 @@ gem 'haml-rails'
 # User authentication
 gem 'omniauth-twitter'
 
+gem 'json', github: 'flori/json', branch: 'v1.8'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
